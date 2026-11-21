@@ -1,0 +1,383 @@
+{
+  "config": {
+    "n_train": 2000,
+    "n_test": 80,
+    "seq_len": 200,
+    "seed": 1,
+    "motifs": [
+      {
+        "id": "MA0004.1",
+        "name": "Arnt",
+        "length": 6,
+        "consensus": "CACGTG"
+      },
+      {
+        "id": "MA0037.3",
+        "name": "GATA3",
+        "length": 8,
+        "consensus": "AGATAAGA"
+      },
+      {
+        "id": "MA0065.2",
+        "name": "Pparg::Rxra",
+        "length": 15,
+        "consensus": "GTAGGGCAAAGGTCA"
+      },
+      {
+        "id": "MA0098.1",
+        "name": "ETS1",
+        "length": 6,
+        "consensus": "CTTCCG"
+      },
+      {
+        "id": "MA0113.3",
+        "name": "NR3C1",
+        "length": 17,
+        "consensus": "GGGTACATAATGTTCCC"
+      },
+      {
+        "id": "MA0144.1",
+        "name": "Stat3",
+        "length": 10,
+        "consensus": "TTCCAGGAAG"
+      }
+    ]
+  },
+  "model_performance": {
+    "PWM-max": {
+      "val_accuracy": 0.6396396396396397,
+      "train_accuracy": 0.675
+    },
+    "k-mer LR": {
+      "val_accuracy": 0.7477477477477478,
+      "train_accuracy": 1.0
+    },
+    "CNN-max": {
+      "val_accuracy": 0.6906906906906907,
+      "train_accuracy": 0.8965
+    }
+  },
+  "attribution_results": [
+    {
+      "model": "PWM-max",
+      "method": "exact",
+      "position_auc": 0.7884375566401847,
+      "position_auc_std": 0.1928741794045545,
+      "top10pct_hit": 0.1675,
+      "peak_inside": 0.1,
+      "aopc": 0.8546131419001473,
+      "sufficiency": 0.2360002770768278,
+      "seconds": 0.01992654800415039,
+      "val_accuracy": 0.6396396396396397
+    },
+    {
+      "model": "PWM-max",
+      "method": "ism",
+      "position_auc": 0.8017636174499536,
+      "position_auc_std": 0.1823044328614607,
+      "top10pct_hit": 0.22875,
+      "peak_inside": 0.3375,
+      "aopc": 0.9232605554668231,
+      "sufficiency": 0.16471533560865043,
+      "seconds": 2.4137351512908936,
+      "val_accuracy": 0.6396396396396397
+    },
+    {
+      "model": "PWM-max",
+      "method": "grad_input",
+      "position_auc": 0.7884375566401847,
+      "position_auc_std": 0.1928741794045545,
+      "top10pct_hit": 0.1675,
+      "peak_inside": 0.1,
+      "aopc": 0.8546131419001473,
+      "sufficiency": 0.2360002770768278,
+      "seconds": 0.011474370956420898,
+      "val_accuracy": 0.6396396396396397
+    },
+    {
+      "model": "PWM-max",
+      "method": "ig",
+      "position_auc": 0.7919385021806485,
+      "position_auc_std": 0.19595554472094973,
+      "top10pct_hit": 0.180625,
+      "peak_inside": 0.2375,
+      "aopc": 0.9439779790770584,
+      "sufficiency": 0.5269872279098238,
+      "seconds": 1.0133531093597412,
+      "val_accuracy": 0.6396396396396397
+    },
+    {
+      "model": "PWM-max",
+      "method": "smoothgrad",
+      "position_auc": 0.7879243820449062,
+      "position_auc_std": 0.20851417029036245,
+      "top10pct_hit": 0.209375,
+      "peak_inside": 0.0875,
+      "aopc": 0.8643667435948945,
+      "sufficiency": 0.14522651172666334,
+      "seconds": 0.3342475891113281,
+      "val_accuracy": 0.6396396396396397
+    },
+    {
+      "model": "k-mer LR",
+      "method": "exact",
+      "position_auc": 0.5409852179912147,
+      "position_auc_std": 0.15290139111556167,
+      "top10pct_hit": 0.07,
+      "peak_inside": 0.075,
+      "aopc": -1.2437120448895231,
+      "sufficiency": 1.0391415684311542,
+      "seconds": 0.017937421798706055,
+      "val_accuracy": 0.7477477477477478
+    },
+    {
+      "model": "k-mer LR",
+      "method": "ism",
+      "position_auc": 0.5469618358004221,
+      "position_auc_std": 0.11744857747809047,
+      "top10pct_hit": 0.076875,
+      "peak_inside": 0.075,
+      "aopc": -1.1629678385274467,
+      "sufficiency": 1.0897972823362203,
+      "seconds": 13.215551137924194,
+      "val_accuracy": 0.7477477477477478
+    },
+    {
+      "model": "k-mer LR",
+      "method": "grad_input",
+      "position_auc": 0.5409852179912147,
+      "position_auc_std": 0.15290139111556167,
+      "top10pct_hit": 0.07,
+      "peak_inside": 0.075,
+      "aopc": -1.2437120448895231,
+      "sufficiency": 1.0391415684311542,
+      "seconds": 0.01904773712158203,
+      "val_accuracy": 0.7477477477477478
+    },
+    {
+      "model": "k-mer LR",
+      "method": "ig",
+      "position_auc": 0.5409852179912147,
+      "position_auc_std": 0.15290139111556167,
+      "top10pct_hit": 0.07,
+      "peak_inside": 0.075,
+      "aopc": -1.2437120448895231,
+      "sufficiency": 1.0391415684311542,
+      "seconds": 1.286350965499878,
+      "val_accuracy": 0.7477477477477478
+    },
+    {
+      "model": "k-mer LR",
+      "method": "smoothgrad",
+      "position_auc": 0.5409852179912147,
+      "position_auc_std": 0.15290139111556167,
+      "top10pct_hit": 0.07,
+      "peak_inside": 0.075,
+      "aopc": -1.2437120448895231,
+      "sufficiency": 1.0391415684311542,
+      "seconds": 0.42997241020202637,
+      "val_accuracy": 0.7477477477477478
+    },
+    {
+      "model": "CNN-max",
+      "method": "exact",
+      "position_auc": 0.6966811874516639,
+      "position_auc_std": 0.2122167756955285,
+      "top10pct_hit": 0.15375,
+      "peak_inside": 0.1625,
+      "aopc": 0.8901422640712033,
+      "sufficiency": 0.00021381577659172787,
+      "seconds": 0.008000373840332031,
+      "val_accuracy": 0.6906906906906907
+    },
+    {
+      "model": "CNN-max",
+      "method": "ism",
+      "position_auc": 0.6910121237662654,
+      "position_auc_std": 0.21475121400148298,
+      "top10pct_hit": 0.173125,
+      "peak_inside": 0.3125,
+      "aopc": 0.8527998541142024,
+      "sufficiency": 0.0012583669753103513,
+      "seconds": 2.8944685459136963,
+      "val_accuracy": 0.6906906906906907
+    },
+    {
+      "model": "CNN-max",
+      "method": "grad_input",
+      "position_auc": 0.6966811874516639,
+      "position_auc_std": 0.2122167756955285,
+      "top10pct_hit": 0.15375,
+      "peak_inside": 0.1625,
+      "aopc": 0.8901422640712033,
+      "sufficiency": 0.00021381577659172787,
+      "seconds": 0.006000041961669922,
+      "val_accuracy": 0.6906906906906907
+    },
+    {
+      "model": "CNN-max",
+      "method": "ig",
+      "position_auc": 0.7279738175536863,
+      "position_auc_std": 0.23611245841487832,
+      "top10pct_hit": 0.19250000000000003,
+      "peak_inside": 0.3625,
+      "aopc": 0.9239628707555998,
+      "sufficiency": 0.01825522751354324,
+      "seconds": 0.43503236770629883,
+      "val_accuracy": 0.6906906906906907
+    },
+    {
+      "model": "CNN-max",
+      "method": "smoothgrad",
+      "position_auc": 0.7010178762183769,
+      "position_auc_std": 0.18771165063006745,
+      "top10pct_hit": 0.1575,
+      "peak_inside": 0.2875,
+      "aopc": 0.9048468768434247,
+      "sufficiency": 0.00045702145702422576,
+      "seconds": 0.1409742832183838,
+      "val_accuracy": 0.6906906906906907
+    }
+  ],
+  "method_agreement": {
+    "PWM-max|exact_vs_ism": 0.7035978580062492,
+    "PWM-max|exact_vs_grad_input": 1.0,
+    "PWM-max|exact_vs_ig": 0.9860263461016114,
+    "PWM-max|exact_vs_smoothgrad": 0.7841100885590611,
+    "k-mer LR|exact_vs_ism": 0.27089649828157697,
+    "k-mer LR|exact_vs_grad_input": 1.0,
+    "k-mer LR|exact_vs_ig": 1.0,
+    "k-mer LR|exact_vs_smoothgrad": 1.0,
+    "CNN-max|exact_vs_ism": 0.6019809381059853,
+    "CNN-max|exact_vs_grad_input": 1.0,
+    "CNN-max|exact_vs_ig": 0.9572606867645245,
+    "CNN-max|exact_vs_smoothgrad": 0.8021370592923356
+  },
+  "completeness_max_error": {
+    "PWM-max": 7.105427357601002e-15,
+    "k-mer LR": 3.3306690738754696e-16,
+    "CNN-max": 1.7763568394002505e-15
+  },
+  "width_sweep": [
+    {
+      "group": "短(6-8bp)",
+      "mean_motif_len": 6.8,
+      "width": 6,
+      "val_accuracy": 0.764,
+      "position_auc": 0.6226320205111684,
+      "top10pct_hit": 0.081
+    },
+    {
+      "group": "短(6-8bp)",
+      "mean_motif_len": 6.8,
+      "width": 8,
+      "val_accuracy": 0.744,
+      "position_auc": 0.6184724012027492,
+      "top10pct_hit": 0.09399999999999999
+    },
+    {
+      "group": "短(6-8bp)",
+      "mean_motif_len": 6.8,
+      "width": 10,
+      "val_accuracy": 0.724,
+      "position_auc": 0.5832333279639175,
+      "top10pct_hit": 0.064
+    },
+    {
+      "group": "短(6-8bp)",
+      "mean_motif_len": 6.8,
+      "width": 12,
+      "val_accuracy": 0.736,
+      "position_auc": 0.6095809842139175,
+      "top10pct_hit": 0.05800000000000001
+    },
+    {
+      "group": "短(6-8bp)",
+      "mean_motif_len": 6.8,
+      "width": 16,
+      "val_accuracy": 0.668,
+      "position_auc": 0.5620129939862543,
+      "top10pct_hit": 0.057999999999999996
+    },
+    {
+      "group": "中(10-12bp)",
+      "mean_motif_len": 10.75,
+      "width": 6,
+      "val_accuracy": 0.732,
+      "position_auc": 0.5954064173705271,
+      "top10pct_hit": 0.12699999999999997
+    },
+    {
+      "group": "中(10-12bp)",
+      "mean_motif_len": 10.75,
+      "width": 8,
+      "val_accuracy": 0.708,
+      "position_auc": 0.6578571921287208,
+      "top10pct_hit": 0.154
+    },
+    {
+      "group": "中(10-12bp)",
+      "mean_motif_len": 10.75,
+      "width": 10,
+      "val_accuracy": 0.736,
+      "position_auc": 0.7180845946130101,
+      "top10pct_hit": 0.18299999999999997
+    },
+    {
+      "group": "中(10-12bp)",
+      "mean_motif_len": 10.75,
+      "width": 12,
+      "val_accuracy": 0.716,
+      "position_auc": 0.726921097769138,
+      "top10pct_hit": 0.15899999999999997
+    },
+    {
+      "group": "中(10-12bp)",
+      "mean_motif_len": 10.75,
+      "width": 16,
+      "val_accuracy": 0.708,
+      "position_auc": 0.6574395290558225,
+      "top10pct_hit": 0.14600000000000002
+    },
+    {
+      "group": "长(15-17bp)",
+      "mean_motif_len": 16.0,
+      "width": 6,
+      "val_accuracy": 0.78,
+      "position_auc": 0.6971576081385146,
+      "top10pct_hit": 0.313
+    },
+    {
+      "group": "长(15-17bp)",
+      "mean_motif_len": 16.0,
+      "width": 8,
+      "val_accuracy": 0.836,
+      "position_auc": 0.7859060561043204,
+      "top10pct_hit": 0.32800000000000007
+    },
+    {
+      "group": "长(15-17bp)",
+      "mean_motif_len": 16.0,
+      "width": 10,
+      "val_accuracy": 0.828,
+      "position_auc": 0.7815595854292092,
+      "top10pct_hit": 0.32899999999999996
+    },
+    {
+      "group": "长(15-17bp)",
+      "mean_motif_len": 16.0,
+      "width": 12,
+      "val_accuracy": 0.84,
+      "position_auc": 0.8307663825831618,
+      "top10pct_hit": 0.364
+    },
+    {
+      "group": "长(15-17bp)",
+      "mean_motif_len": 16.0,
+      "width": 16,
+      "val_accuracy": 0.844,
+      "position_auc": 0.8209655676891937,
+      "top10pct_hit": 0.36700000000000005
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+# 忽略规则
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# 测试与覆盖率
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# 构建与工具缓存
+_build/
+*.log
+*.log.err
+
+# 本地数据缓存（可重新下载）
+data_cache/
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# matplotlib
+mplcache/
