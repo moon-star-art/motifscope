@@ -14,6 +14,7 @@ import argparse
 import json
 import os
 import sys
+import time
 from pathlib import Path
 
 
@@ -34,7 +35,7 @@ def cmd_demo(args: argparse.Namespace) -> int:
 
     from .attribution import attribute, position_scores
     from .data import make_heldout_motifs, make_synthetic
-    from .evaluate import deletion_curve, recovery_report
+    from .evaluate import aopc, deletion_curve, insertion_curve, recovery_report, sufficiency
     from .motifs.database import MotifDatabase
     from .models import ConvMaxPoolModel, KmerLogisticModel, PWMScoringModel
     from .report import plot_attribution_heatmap, plot_sequence_logo, render_report
@@ -71,9 +72,16 @@ def cmd_demo(args: argparse.Namespace) -> int:
         for method in ["exact", "grad_input", "ig", "ism"]:
             if method == "exact" and not hasattr(model, "exact_attribution"):
                 continue
+            t0 = time.time()
             attr = attribute(model, test.onehot, method=method)
+            elapsed = time.time() - t0
             pos = position_scores(attr)
             rep = recovery_report(pos, test.truth)
+            # 扰动型指标：与回收型互补，必须真实计算而非占位
+            dele = deletion_curve(model, test.onehot, pos, steps=10)
+            ins = insertion_curve(model, test.onehot, pos, steps=10)
+            aopc_val = aopc(dele)
+            suff_val = sufficiency(ins)
             if name == "PWM-max":
                 score_store[method] = pos
             results.append(
@@ -83,12 +91,16 @@ def cmd_demo(args: argparse.Namespace) -> int:
                     "position_auc": rep["position_auc_mean"],
                     "top10pct_hit": rep["topk_hit_mean"],
                     "peak_inside": rep["peak_inside_rate"],
-                    "aopc": 0.0,
-                    "sufficiency": 0.0,
-                    "seconds": 0.0,
+                    "aopc": aopc_val,
+                    "sufficiency": suff_val,
+                    "seconds": elapsed,
                 }
             )
-            print(f"  {method:12s} 位置AUC={rep['position_auc_mean']:.3f} Top10%命中={rep['topk_hit_mean']:.3f}")
+            print(
+                f"  {method:12s} 位置AUC={rep['position_auc_mean']:.3f} "
+                f"Top10%命中={rep['topk_hit_mean']:.3f} AOPC={aopc_val:+.3f} "
+                f"充分性={suff_val:.3f}"
+            )
 
     logos = {}
     for m in motifs[:4]:
